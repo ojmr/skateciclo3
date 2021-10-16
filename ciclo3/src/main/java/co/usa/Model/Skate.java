@@ -1,5 +1,5 @@
 
-package co.usa.ciclo3;
+package co.usa.Model;
 
 /**
  * @author Rocket

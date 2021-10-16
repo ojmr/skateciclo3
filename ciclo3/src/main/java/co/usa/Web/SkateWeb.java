@@ -1,5 +1,7 @@
-package co.usa.ciclo3;
+package co.usa.Web;
 
+import co.usa.Services.ServicioSkate;
+import co.usa.Model.Skate;
 import java.util.List;
 import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;

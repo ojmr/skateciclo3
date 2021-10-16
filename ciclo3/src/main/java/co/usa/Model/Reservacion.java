@@ -1,9 +1,12 @@
-package co.usa.ciclo3;
+package co.usa.Model;
 
 /**
  * @author Rocket
  */
 
+import co.usa.Model.Categoria;
+import co.usa.Model.Skate;
+import co.usa.Model.Cliente;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import java.io.Serializable;
 import java.util.Date;

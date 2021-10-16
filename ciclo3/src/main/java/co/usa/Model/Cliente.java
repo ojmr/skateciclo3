@@ -1,10 +1,11 @@
 
-package co.usa.ciclo3;
+package co.usa.Model;
 
 /**
  * @author Rocket
  */
 
+import co.usa.Model.Mensaje;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import java.io.Serializable;
 import java.util.List;

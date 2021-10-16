@@ -1,8 +1,9 @@
-package co.usa.ciclo3;
+package co.usa.Model;
 
 /**
  * @author Rocket
  */
+import co.usa.Model.Skate;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import java.io.Serializable;
 import java.util.List;
@@ -13,7 +14,7 @@ import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
-//si sirve
+
 @Entity
 @Table(name = "category")
 public class Categoria implements Serializable{
