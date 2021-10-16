@@ -1,10 +1,8 @@
-
 package co.usa.Model;
 
 /**
  * @author Rocket
  */
-
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import java.io.Serializable;
 import javax.persistence.Entity;
@@ -18,9 +16,10 @@ import javax.persistence.Table;
 @Entity
 @Table(name = "skate")
 public class Skate implements Serializable {
-   @Id
+
+    @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    
+
     private Integer idSkate;
     private String name;
     private String brand;
@@ -28,7 +27,7 @@ public class Skate implements Serializable {
     private String description;
 
     @ManyToOne
-    @JoinColumn(name ="id")
+    @JoinColumn(name = "id")
     @JsonIgnoreProperties("category")
     private Categoria categoria;
 

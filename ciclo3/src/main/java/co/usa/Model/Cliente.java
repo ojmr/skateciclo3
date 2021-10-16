@@ -1,10 +1,8 @@
-
 package co.usa.Model;
 
 /**
  * @author Rocket
  */
-
 import co.usa.Model.Mensaje;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import java.io.Serializable;
@@ -18,10 +16,10 @@ import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import org.aspectj.bridge.Message;
 
-
 @Entity
 @Table(name = "client")
-public class Cliente implements Serializable{
+public class Cliente implements Serializable {
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer idClient;
@@ -30,13 +28,13 @@ public class Cliente implements Serializable{
     private String name;
     private Integer age;
 
-    @OneToMany(cascade = {CascadeType.PERSIST},mappedBy="client")
+    @OneToMany(cascade = {CascadeType.PERSIST}, mappedBy = "client")
     @JsonIgnoreProperties("client")
-    private List<Mensaje>mensaje;
+    private List<Mensaje> mensaje;
 
-    @OneToMany(cascade = {CascadeType.PERSIST},mappedBy="client")
+    @OneToMany(cascade = {CascadeType.PERSIST}, mappedBy = "client")
     @JsonIgnoreProperties("client")
-    private List<Reservacion>reservacion;
+    private List<Reservacion> reservacion;
 
     public Integer getIdClient() {
         return idClient;
@@ -93,6 +91,5 @@ public class Cliente implements Serializable{
     public void setReservacion(List<Reservacion> reservacion) {
         this.reservacion = reservacion;
     }
-  
-    
+
 }

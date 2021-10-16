@@ -1,10 +1,8 @@
-
 package co.usa.Model;
 
 /**
  * @author Rocket
  */
-
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import java.io.Serializable;
 import javax.persistence.Entity;
@@ -18,20 +16,21 @@ import org.springframework.boot.autoconfigure.integration.IntegrationProperties.
 
 @Entity
 @Table(name = "message")
-public class Mensaje implements Serializable{
+public class Mensaje implements Serializable {
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer idMessage;
     private String messageText;
 
     @ManyToOne
-    @JoinColumn(name="idSkate")
-    @JsonIgnoreProperties({"message","reservations"})
+    @JoinColumn(name = "idSkate")
+    @JsonIgnoreProperties({"message", "reservations"})
     private Skate skate;
 
     @ManyToOne
-    @JoinColumn(name="idClient")
-    @JsonIgnoreProperties({"messages","reservations"})
+    @JoinColumn(name = "idClient")
+    @JsonIgnoreProperties({"messages", "reservations"})
     private Cliente cliente;
 
     public Integer getIdMessage() {
@@ -65,6 +64,5 @@ public class Mensaje implements Serializable{
     public void setCliente(Cliente cliente) {
         this.cliente = cliente;
     }
-    
-    
+
 }

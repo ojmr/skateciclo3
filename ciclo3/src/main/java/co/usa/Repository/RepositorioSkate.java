@@ -10,23 +10,22 @@ import org.springframework.stereotype.Repository;
 /**
  * @author Rocket
  */
-
 @Repository
 public class RepositorioSkate {
-    
+
     @Autowired
     private InterfaceSkate crud;
-    
-    public List<Skate> getAll(){
+
+    public List<Skate> getAll() {
         return (List<Skate>) crud.findAll();
     }
-    
-    public Optional <Skate> getSkate(int id){
+
+    public Optional<Skate> getSkate(int id) {
         return crud.findById(id);
     }
-    
-    public Skate save(Skate skate){
+
+    public Skate save(Skate skate) {
         return crud.save(skate);
     }
-    
+
 }
