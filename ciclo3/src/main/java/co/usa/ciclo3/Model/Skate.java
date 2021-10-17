@@ -9,6 +9,7 @@ import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import java.io.Serializable;
 import java.util.List;
 import javax.persistence.CascadeType;
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -23,40 +24,34 @@ import javax.persistence.Table;
 public class Skate implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    
-    private Integer idSkate;
+    @Column(name = "id", nullable=false)
+    private Integer id;
     private String name;
     private String brand;
     private Integer year;
     private String description;
 
-    @ManyToOne
-    @JoinColumn(name ="id")
-    @JsonIgnoreProperties("category")
-    private Categoria categoria;
+    @ManyToOne(optional=false)
+    //@JoinColumn(name ="id")
+    @JoinColumn(name = "id", insertable=false, updatable=false)
+    @JsonIgnoreProperties("skates")
+    private Categoria category;
 
     @OneToMany(cascade = {CascadeType.PERSIST},mappedBy="skate")
-    @JsonIgnoreProperties("skate")
-    private List<Mensaje> message;
+    @JsonIgnoreProperties({"skate","cliente"})
+    private List<Mensaje> messages;
     
     @OneToMany(cascade = {CascadeType.PERSIST},mappedBy="skate")
-    @JsonIgnoreProperties("skate")
+    @JsonIgnoreProperties({"skate","client"})
     private List<Reservacion> reservations;
 
-    public Integer getIdSkate() {
-        return idSkate;
+    
+    public Integer getId() {
+        return id;
     }
 
-    public void setIdSkate(Integer idSkate) {
-        this.idSkate = idSkate;
-    }
-
-    public Categoria getCategoria() {
-        return categoria;
-    }
-
-    public void setCategoria(Categoria categoria) {
-        this.categoria = categoria;
+    public void setId(Integer id) {
+        this.id = id;
     }
 
     public String getName() {
@@ -92,20 +87,23 @@ public class Skate implements Serializable {
     }
 
     public Categoria getCategory() {
-        return categoria;
+        return category;
     }
 
     public void setCategory(Categoria category) {
-        this.categoria = category;
+        this.category = category;
     }
 
-    public List<Mensaje> getMessage() {
-        return message;
+    public List<Mensaje> getMessages() {
+        return messages;
     }
 
-    public void setMessage(List<Mensaje> message) {
-        this.message = message;
+    public void setMessages(List<Mensaje> messages) {
+        this.messages = messages;
     }
+
+
+   
 
     public List<Reservacion> getReservations() {
         return reservations;
@@ -114,6 +112,7 @@ public class Skate implements Serializable {
     public void setReservations(List<Reservacion> reservations) {
         this.reservations = reservations;
     }
+
     
     
     

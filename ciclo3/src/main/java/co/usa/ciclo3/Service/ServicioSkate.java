@@ -26,10 +26,10 @@ public class ServicioSkate {
     }
     
     public Skate save(Skate skate){
-         if(skate.getIdSkate()==null){
+         if(skate.getId()==null){
             return metodosCrud.save(skate);
         }else{
-            Optional<Skate> evt=metodosCrud.getSkate(skate.getIdSkate());
+            Optional<Skate> evt=metodosCrud.getSkate(skate.getId());
             if(evt.isEmpty()){
             return metodosCrud.save(skate);
             }else{

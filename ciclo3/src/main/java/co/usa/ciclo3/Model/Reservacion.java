@@ -32,18 +32,17 @@ public class Reservacion implements Serializable {
 
     @ManyToOne
     @JoinColumn(name="id")
-    @JsonIgnoreProperties("reservation") 
+    @JsonIgnoreProperties("reservations") 
     private Skate skate;
 
     @ManyToOne
     @JoinColumn(name="idClient")
-    @JsonIgnoreProperties({"reservation","messages"})
-    private Cliente cliente;
+    @JsonIgnoreProperties({"reservations","messages"})
+    private Cliente client;
     
     @OneToOne
     @JsonIgnoreProperties("reservation") 
     private Score score;
-    
 
     public Integer getIdReservation() {
         return idReservation;
@@ -85,6 +84,24 @@ public class Reservacion implements Serializable {
         this.skate = skate;
     }
 
+    public Cliente getClient() {
+        return client;
+    }
+
+    public void setClient(Cliente client) {
+        this.client = client;
+    }
+
+    public Score getScore() {
+        return score;
+    }
+
+    public void setScore(Score score) {
+        this.score = score;
+    }
+    
+
+    
 
     
 }

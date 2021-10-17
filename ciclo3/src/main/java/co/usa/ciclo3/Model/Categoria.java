@@ -13,7 +13,7 @@ import javax.persistence.Id;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
-//nuevo cambios nuevos cambios
+
 @Entity
 @Table(name = "category")
 public class Categoria implements Serializable{
@@ -23,9 +23,9 @@ public class Categoria implements Serializable{
      private String name;
      private String description;
      
-    @OneToMany(cascade = {CascadeType.PERSIST},mappedBy="categoria")
+    @OneToMany(cascade = {CascadeType.PERSIST},mappedBy="category")
     @JsonIgnoreProperties("category")
-    private List<Skate> skate;
+    private List<Skate> skates;
 
     public Integer getId() {
         return id;
@@ -34,8 +34,6 @@ public class Categoria implements Serializable{
     public void setId(Integer id) {
         this.id = id;
     }
-
-    
 
     public String getName() {
         return name;
@@ -53,13 +51,14 @@ public class Categoria implements Serializable{
         this.description = description;
     }
 
-    public List<Skate> getSkate() {
-        return skate;
+    public List<Skate> getSkates() {
+        return skates;
     }
 
-    public void setSkate(List<Skate> skate) {
-        this.skate = skate;
+    public void setSkates(List<Skate> skates) {
+        this.skates = skates;
     }
+
    
 
 }

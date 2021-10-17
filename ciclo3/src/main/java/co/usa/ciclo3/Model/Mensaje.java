@@ -27,14 +27,13 @@ public class Mensaje implements Serializable{
     
     @ManyToOne
     @JoinColumn(name="idSkate")
-    @JsonIgnoreProperties({"message","reservation"})
+    @JsonIgnoreProperties({"messages","reservations"})
     private Skate skate;
 
     @ManyToOne
     @JoinColumn(name="idClient")
-    @JsonIgnoreProperties({"message","reservation"})
-    private Cliente cliente;
-    
+    @JsonIgnoreProperties({"messages","reservations"})
+    private Cliente client;
 
     public Integer getIdMessage() {
         return idMessage;
@@ -52,7 +51,7 @@ public class Mensaje implements Serializable{
         this.messageText = messageText;
     }
 
-   public Skate getSkate() {
+    public Skate getSkate() {
         return skate;
     }
 
@@ -60,13 +59,15 @@ public class Mensaje implements Serializable{
         this.skate = skate;
     }
 
-    public Cliente getCliente() {
-        return cliente;
+    public Cliente getClient() {
+        return client;
     }
 
-    public void setCliente(Cliente cliente) {
-        this.cliente = cliente;
+    public void setClient(Cliente client) {
+        this.client = client;
     }
     
+
+   
     
 }
