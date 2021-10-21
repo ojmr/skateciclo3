@@ -32,4 +32,7 @@ public class RepositorioScore {
     public Score save(Score score){
         return crud.save(score);
     }    
+    public void delete(Score score){
+        crud.delete(score);
+    }
 }

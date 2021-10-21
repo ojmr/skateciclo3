@@ -5,9 +5,7 @@
 package co.usa.ciclo3.Repository;
 
 import co.usa.ciclo3.Interface.InterfaceCliente;
-import co.usa.ciclo3.Interface.InterfaceSkate;
 import co.usa.ciclo3.Model.Cliente;
-import co.usa.ciclo3.Model.Skate;
 import java.util.List;
 import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -33,5 +31,8 @@ public class RepositorioCliente {
 
     public Cliente save(Cliente cliente) {
         return crud.save(cliente);
+    }
+    public void delete(Cliente cliente){
+        crud.delete(cliente);
     }
 }

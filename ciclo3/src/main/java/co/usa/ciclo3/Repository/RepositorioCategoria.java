@@ -33,5 +33,8 @@ public class RepositorioCategoria {
     public Categoria save(Categoria categoria) {
         return crud.save(categoria);
     }
+    public void delete(Categoria Categoria){
+       crud.delete(Categoria);
+    }
 
 }

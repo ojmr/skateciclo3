@@ -32,4 +32,7 @@ public class RepositorioReservacion {
     public Reservacion save(Reservacion reservacion) {
         return crud.save(reservacion);
     }
+    public void delete(Reservacion reservation){
+        crud.delete(reservation);
+    }
 }

@@ -32,4 +32,7 @@ public class RepositorioMensaje {
     public Mensaje save(Mensaje mensaje) {
         return crud.save(mensaje);
     }
+    public void delete(Mensaje message){
+        crud.delete(message);
+    }
 }
