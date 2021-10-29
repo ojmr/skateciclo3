@@ -6,6 +6,8 @@ package co.usa.ciclo3.Controller;
 
 import co.usa.ciclo3.Model.Reservacion;
 import co.usa.ciclo3.Service.ServicioReservacion;
+import co.usa.ciclo3.reportes.ContadorClientes;
+import co.usa.ciclo3.reportes.StatusReservas;
 import java.util.List;
 import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -28,14 +30,14 @@ import org.springframework.web.bind.annotation.RestController;
  */
 @RestController
 @RequestMapping("/api/Reservation")
-@CrossOrigin(origins = "*", methods= {RequestMethod.GET,RequestMethod.POST,RequestMethod.PUT,RequestMethod.DELETE})
+@CrossOrigin(origins = "*", methods = {RequestMethod.GET, RequestMethod.POST, RequestMethod.PUT, RequestMethod.DELETE})
 public class WebReservacion {
 
     @GetMapping("/holaMundo")
-    public String saludar(){
+    public String saludar() {
         return "Hola Mundo desde reservacion";
     }
-    
+
     @Autowired
     private ServicioReservacion servicios;
 
@@ -54,14 +56,32 @@ public class WebReservacion {
     public Reservacion save(@RequestBody Reservacion reservacion) {
         return servicios.save(reservacion);
     }
+
     @PutMapping("/update")
     @ResponseStatus(HttpStatus.CREATED)
     public Reservacion update(@RequestBody Reservacion reservation) {
         return servicios.update(reservation);
     }
+
     @DeleteMapping("/{id}")
     @ResponseStatus(HttpStatus.NO_CONTENT)
     public boolean delete(@PathVariable("id") int reservationId) {
         return servicios.deleteReservation(reservationId);
+    }
+
+    @GetMapping("/report-status")
+    public StatusReservas getReservas() {
+        return servicios.getReporteStatusReservaciones();
+    }
+
+    @GetMapping("/report-dates/{dateOne}/{dateTwo}")
+    public List<Reservacion> getReservasTiempo(@PathVariable("dateOne") String dateOne, @PathVariable("dateTwo") String dateTwo) {
+        return servicios.getReportesTiempoReservaciones(dateOne, dateTwo);
+    }
+
+    @GetMapping("/report-clients")
+    public List<ContadorClientes> getClientes() {
+        return servicios.servicioTopClientes();
+
     }
 }

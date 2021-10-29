@@ -1,10 +1,8 @@
-
 package co.usa.ciclo3.Model;
 
 /**
  * @author Rocket
  */
-
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import java.io.Serializable;
 import java.util.List;
@@ -22,30 +20,32 @@ import javax.persistence.Table;
 @Entity
 @Table(name = "skate")
 public class Skate implements Serializable {
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "id", nullable=false)
+    @Column(name = "id", nullable = false)
     private Integer id;
     private String name;
     private String brand;
     private Integer year;
     private String description;
 
-    @ManyToOne(optional=false)
+    ///@ManyToOne(optional=true)
     //@JoinColumn(name ="id")
-    @JoinColumn(name = "id", insertable=false, updatable=false)
+    ///@JoinColumn(name = "id", insertable=false, updatable=false)
+    @ManyToOne
+    @JoinColumn(name = "categoryid")
     @JsonIgnoreProperties("skates")
     private Categoria category;
 
-    @OneToMany(cascade = {CascadeType.PERSIST},mappedBy="skate")
-    @JsonIgnoreProperties({"skate","client"})
+    @OneToMany(cascade = {CascadeType.PERSIST}, mappedBy = "skate")
+    @JsonIgnoreProperties({"skate", "client"})
     private List<Mensaje> messages;
-    
-    @OneToMany(cascade = {CascadeType.PERSIST},mappedBy="skate")
-    @JsonIgnoreProperties({"skate","client"})
+
+    @OneToMany(cascade = {CascadeType.PERSIST}, mappedBy = "skate")
+    @JsonIgnoreProperties({"skate", "client"})
     private List<Reservacion> reservations;
 
-    
     public Integer getId() {
         return id;
     }
@@ -102,9 +102,6 @@ public class Skate implements Serializable {
         this.messages = messages;
     }
 
-
-   
-
     public List<Reservacion> getReservations() {
         return reservations;
     }
@@ -113,7 +110,5 @@ public class Skate implements Serializable {
         this.reservations = reservations;
     }
 
-    
-    
-    
+   
 }
